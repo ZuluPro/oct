@@ -134,6 +134,8 @@ class HightQuarter(object):
                 self._run_loop_action()
                 self._print_status(elapsed)
                 elapsed = t() - start_time
+                if self.turrets_manager.finished_count == self.config['min_turrets']:
+                    break
             except (Exception, KeyboardInterrupt):
                 print("\nStopping test, sending stop command to turrets")
                 self.turrets_manager.stop()
